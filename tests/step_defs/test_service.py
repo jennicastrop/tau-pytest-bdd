@@ -5,6 +5,7 @@ http://docs.python-requests.org/
 """
 
 import requests
+import pytest
 
 from pytest_bdd import scenarios, given, then, parsers
 
@@ -21,6 +22,7 @@ scenarios('../features/service.feature', example_converters=dict(phrase=str))
 
 # Given Steps
 
+@pytest.fixture
 @given('the DuckDuckGo API is queried with "<phrase>"')
 def ddg_response(phrase):
     params = {'q': phrase, 'format': 'json'}
