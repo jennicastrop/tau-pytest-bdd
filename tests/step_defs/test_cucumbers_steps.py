@@ -1,7 +1,7 @@
 from pytest_bdd import scenarios, parsers, given, when, then
 
 from cucumbers import CucumberBasket
-
+import pytest
 
 EXTRA_TYPES = {
     'Number': int,
@@ -17,7 +17,7 @@ CONVERTERS = {
 
 scenarios('../features/cucumbers.feature', example_converters=CONVERTERS)
 
-
+@pytest.fixture
 @given(parsers.cfparse('the basket has "{initial:Number}" cucumbers', extra_types=EXTRA_TYPES))
 @given('the basket has "<initial>" cucumbers')
 def basket(initial):
